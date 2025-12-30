@@ -291,4 +291,80 @@ h1 {
   font-size: 1.2rem;
   opacity: 0.85;
   margin-top: 10px;
+
+}
+
+/* =========================================
+   MOBILE RESPONSIVE FIXES 
+   (Paste this at the very bottom of style.css)
+   ========================================= */
+
+@media (max-width: 600px) {
+
+  /* 1. Adjust General Text Size */
+  h1 {
+    font-size: 2.2rem; 
+    margin-top: 20px;
+  }
+  .subtitle {
+    font-size: 1.1rem;
+    padding: 0 20px; /* Prevent text touching edges */
+  }
+
+  /* 2. Fix the Buttons (Make them smaller and safe from corners) */
+  .next-btn, .back-btn {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+  .top-btn { top: 15px; right: 15px; }
+  .top-left-btn { top: 15px; left: 15px; }
+
+  /* 3. Fix the Floating Emojis (They are too big on mobile) */
+  .emoji {
+    font-size: 1.5rem; /* Shrink from 3rem to 1.5rem */
+  }
+
+  /* 4. Fix the Gallery (Make images smaller to fit) */
+  .gallery {
+    grid-template-columns: repeat(2, 1fr); /* 2 Columns is good, but... */
+    gap: 10px;
+    width: 95%; /* Use full width */
+    max-height: 65vh; /* Ensure it fits between title and bottom */
+  }
+  
+  .flip-back {
+    font-size: 0.7rem; /* Make memory text smaller */
+    line-height: 1.2;
+    padding: 5px;
+  }
+
+  /* 5. Fix Text Pages (Shayari/Promise) - ALLOW SCROLLING */
+  /* If text is too long for small screen, let it scroll inside the box */
+  .shayari, .promise {
+    font-size: 1rem; /* Smaller font */
+    line-height: 1.5;
+    padding: 15px;
+    width: 90%;
+    max-height: 50vh; /* Limit height so buttons stay visible */
+    overflow-y: auto; /* Scroll if text is too long */
+  }
+
+  /* 6. Fix the Video (Crucial!) */
+  /* We need to shrink the rotated video so it doesn't go off-screen */
+  .video-container {
+    width: 100%;
+    height: 400px; /* Reduce container height */
+  }
+  
+  .love-video {
+    /* We keep the rotation, but shrink the dimensions */
+    width: 300px; /* Visual Height (because rotated) */
+    max-width: 60vh; /* Don't exceed screen height */
+  }
+
+  /* 7. Gift Box Adjustment */
+  .gift-overlay .open-btn {
+    font-size: 1.2rem;
+    padding: 10px 25px;
+  }
 }
