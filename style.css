@@ -338,33 +338,99 @@ h1 {
     padding: 5px;
   }
 
-  /* 5. Fix Text Pages (Shayari/Promise) - ALLOW SCROLLING */
-  /* If text is too long for small screen, let it scroll inside the box */
-  .shayari, .promise {
-    font-size: 1rem; /* Smaller font */
-    line-height: 1.5;
-    padding: 15px;
-    width: 90%;
-    max-height: 50vh; /* Limit height so buttons stay visible */
-    overflow-y: auto; /* Scroll if text is too long */
+  /* =========================================
+   MOBILE RESPONSIVE FIXES (UPDATED V2)
+   (Paste this at the very bottom of style.css)
+   ========================================= */
+
+@media (max-width: 600px) {
+
+  /* --- 1. Adjust General Text Size --- */
+  h1 {
+    font-size: 2rem; 
+    margin-top: 25px;
+  }
+  .subtitle {
+    font-size: 1.1rem;
+    padding: 0 20px; 
   }
 
-  /* 6. Fix the Video (Crucial!) */
-  /* We need to shrink the rotated video so it doesn't go off-screen */
+  /* --- 2. Fix Buttons --- */
+  .next-btn, .back-btn {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+  .top-btn { top: 15px; right: 15px; }
+  .top-left-btn { top: 15px; left: 15px; }
+
+  /* --- 3. Fix Floating Emojis --- */
+  .emoji {
+    font-size: 1.5rem; 
+  }
+
+  /* --- 4. FIX: GALLERY SCROLLING --- */
+  /* Problem: Last images got cut off. */
+  /* Solution: Allow the gallery box itself to scroll vertically. */
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    width: 96%; 
+    /* Limit height to 60% of screen height */
+    max-height: 60vh; 
+    /* Turn on scrolling if images exceed that height */
+    overflow-y: auto; 
+    padding-right: 5px; /* Room for scrollbar */
+    margin-top: 10px;
+  }
+  
+  .flip-back {
+    font-size: 0.75rem; 
+    line-height: 1.2;
+    padding: 5px;
+  }
+
+  /* --- 5. Fix Text Pages (Allow scrolling) --- */
+  .shayari, .promise {
+    font-size: 1rem;
+    line-height: 1.4;
+    padding: 15px;
+    width: 92%;
+    max-height: 55vh; 
+    overflow-y: auto; 
+  }
+
+  /* --- 6. FIX: VIDEO SIZING --- */
+  /* Problem: Rotated video cut off on sides. */
+  /* Solution: Force tighter constraints based on screen height/width. */
   .video-container {
     width: 100%;
-    height: 400px; /* Reduce container height */
+    /* Give it a fixed space that fits on screen */
+    height: 55vh; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* Ensure nothing spills out */
   }
   
   .love-video {
-    /* We keep the rotation, but shrink the dimensions */
-    width: 300px; /* Visual Height (because rotated) */
-    max-width: 60vh; /* Don't exceed screen height */
+    /* It's rotated -90deg. CSS 'width' becomes visual height. */
+    /* Force visual height to be max 50% of screen height */
+    width: 50vh !important; 
+    /* Force visual width not to exceed screen width */
+    max-height: 90vw !important; 
+    
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
   }
 
-  /* 7. Gift Box Adjustment */
+  .end-caption {
+    margin-top: 5px;
+  }
+
+  /* --- 7. Gift Box Adjustment --- */
   .gift-overlay .open-btn {
-    font-size: 1.2rem;
-    padding: 10px 25px;
+    font-size: 1.1rem;
+    padding: 12px 30px;
   }
 }
+
